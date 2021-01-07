@@ -224,7 +224,7 @@ fcsim = function(X,y,gs,lambda=NULL,rho=.1,tol=1e-3,beta=NULL,niter=30,bniter=5,
   lambda2 = (1-delta) * sqrt(pl) * lambda
   
   # Initialize parameters
-  b = c(coef(glm(y~X-1, family=family)))
+  b = coef(cv.glmnet(X,y,family="gaussian",intercept=FALSE))[-1]
   fixed = which.max(abs(cor(X,y)))
   if(nrm2(b)==0) b[fixed] = 1
   c = w = rep(0, length(b))
