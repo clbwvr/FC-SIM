@@ -46,11 +46,10 @@ lower.to.sym = function(x){
 matshow = function(m,main=""){
   p = ncol(m)
   m = apply(m, 2, rev)
-  col5 <- colorRampPalette(c('#377EB8', 'white', 'red'))  #create color ramp starting from blue to red
-  color_levels=100 #the number of colors to use
-  max_absolute_value=max(abs(c(min(m), max(m)))) #what is the maximum absolute value of raster?
-  color_sequence=seq(-max_absolute_value,max_absolute_value,length.out=color_levels+1)
-  image.plot(m, col=col5(n=color_levels), breaks=color_sequence,main=main,xaxt='n',yaxt='n')
+  col5 <- colorRampPalette(c('#377EB8', 'white', 'red'))
+  max_absolute_value=max(abs(c(min(m), max(m)))) 
+  color_sequence=seq(-max_absolute_value,max_absolute_value,length.out=101)
+  image.plot(m, col=col5(n=100), breaks=color_sequence,main=main,xaxt='n',yaxt='n')
 }
 
 # Negative loglikelihood function
@@ -122,6 +121,7 @@ Proj = function(x, fixed = 1){
 }
 
 # ADMM Updates
+
 c_update = function(b, w, rho,fixed=1){
   Proj(b+w, fixed)
 }
