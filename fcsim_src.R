@@ -6,6 +6,7 @@ library(matrixcalc)
 library(splines)
 library(glmnet)
 library(fields)
+library(gratia)
 
 # Helper functions
 
@@ -250,7 +251,7 @@ fcsim = function(X,y,gs,lambda=NULL,rho=.1,tol=1e-3,beta=NULL,niter=30,bniter=5,
     else{
       psp = pspline(y, ti, family=family)
       fhat = function(u) c(predict(psp,newdata = data.frame(x=u)))
-      fdhat = function(u) approxfun(c(ti), c(gratia::fderiv(psp,newdata=data.frame(x=ti))$derivatives$`s(x)`$deriv), rule = 2)(u)
+      fdhat = function(u) approxfun(c(ti), c(fderiv(psp,newdata=data.frame(x=ti))$derivatives$`s(x)`$deriv), rule = 2)(u)
     }
     
     # update b
