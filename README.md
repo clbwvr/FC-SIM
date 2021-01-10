@@ -1,4 +1,4 @@
-Code Illustration
+## Implementation of code for "Single Index Models with Functional Connectivity Network Predictors"
 
 ### Load source code
 
