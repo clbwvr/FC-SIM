@@ -1,4 +1,4 @@
-## Implementation of algorithms in "Single Index Models with Functional Connectivity Network Predictors"
+## Implementation of the model proposed in "Single Index Models with Functional Connectivity Network Predictors".
 
 ### Load source code
 
