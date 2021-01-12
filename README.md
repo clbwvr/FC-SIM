@@ -53,7 +53,7 @@ ti = X%*%bhat
 pred = fhat(ti)[order(ti)]
 ey = y[order(ti)]
 ti = sort(ti)
-plot(ti, ey,ylab=expression(paste(y, " and ", hat(y))), xlab=expression(paste(f," (< ",bold(X),", ",hat(bold(B))," >)")), main="Estimated")
+plot(ti, ey,ylab=expression(paste(y, " and ", hat(y))), xlab=expression(paste(" < ",bold(X),", ",hat(bold(B))," >')), main="Estimated")
 points(ti, pred, col="red", type="l",lwd=2)
 
 Bhat = matrix(0,p,p)
