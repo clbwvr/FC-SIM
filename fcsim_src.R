@@ -11,7 +11,7 @@ library(data.table)
 library(Rcpp)
 
 # Source cpp functions
-sourceCpp("code/cppsrc.cpp")
+sourceCpp("cppsrc.cpp")
 
 # Helper functions
 nrm1 = function(x) sum(abs(x))
