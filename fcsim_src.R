@@ -8,6 +8,10 @@ library(glmnet)
 library(fields)
 library(gratia)
 library(data.table)
+library(Rcpp)
+
+# Source cpp functions
+sourceCpp("code/cppsrc.cpp")
 
 # Helper functions
 nrm1 = function(x) sum(abs(x))
@@ -56,14 +60,13 @@ matshow = function(m,main=""){
 # Negative loglikelihood function
 l = function(fxb,y,family){
   if(family=="gaussian"){
-    return(cppllnorm(fxb,y))
+    return(mean((fxb - y)^2))
   }
   else if(family=="binomial"){
     pi = 1/(exp(-fxb)+1)
     pi[pi==1] = 1-1e-16
     pi[pi==0] = 1e-16
     return(-mean(y * log(pi) + (1-y)*log(1-pi)))
-    # return(cppllbin(fxb,y))
   }
 }
 
