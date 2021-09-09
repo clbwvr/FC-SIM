@@ -290,5 +290,8 @@ fcsim = function(X,y,gs,lambda=NULL,rho=.1,tol=1e-3,beta=NULL,niter=30,bniter=5,
     if(linear) break
   }
   b=unname(b)
+  # threshold very small values
+  tau = sd(b)
+  b[abs(b) < tau/4] = 0
   return(list("fhat"=fhat, "bhat"=b, "t"=cppmatvec(X, b), "pred"=fhat(ti), "losses"=losses))
 }
